@@ -57,11 +57,21 @@ public class StudentRepository {
             teacherHashMap.remove(teacher);
         }
         if(teacherStudentPair.containsKey(teacher)){
+            List<String> listOfStudents = teacherStudentPair.get(teacher);
+            for (String student : listOfStudents){
+                studentHashMap.remove(student);
+            }
             teacherStudentPair.remove(teacher);
         }
     }
 
     public void deleteAllTeachers(){
+        for (String teacher : teacherStudentPair.keySet() ){
+            for(String student : teacherStudentPair.get(teacher)){
+                if (studentHashMap.containsKey(student))
+                studentHashMap.remove(student);
+            }
+        }
         teacherHashMap.clear();
         teacherStudentPair.clear();
     }
