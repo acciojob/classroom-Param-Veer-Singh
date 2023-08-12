@@ -28,6 +28,7 @@ public class StudentRepository {
         if(studentHashMap.containsKey(student) && teacherHashMap.containsKey(teacher)){
             List<String> listOfStudents = teacherStudentPair.getOrDefault(teacher,new ArrayList<>());
             listOfStudents.add(student);
+            teacherStudentPair.put(teacher,listOfStudents);
         }
     }
 
